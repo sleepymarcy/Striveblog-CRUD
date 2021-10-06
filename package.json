@@ -1,32 +1,44 @@
 {
-  "name": "m5-d6",
+  "name": "striveblog-crud",
   "version": "1.0.0",
-  "description": "",
-  "type": "module",
+  "description": "Striveblog-CRUD",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon -r dotenv/config src/server.js",
-    "start": "node -r dotenv/config src/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sleepymarcy/Striveblog-CRUD.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sleepymarcy/Striveblog-CRUD/issues"
+  },
+  "homepage": "https://github.com/sleepymarcy/Striveblog-CRUD#readme",
   "dependencies": {
-    "@sendgrid/mail": "^7.4.4",
-    "axios": "^0.21.1",
-    "cloudinary": "^1.25.1",
+    "@sendgrid/mail": "^7.4.7",
+    "axios": "^0.22.0",
+    "cloudinary": "^1.27.0",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-list-endpoints": "^5.0.0",
-    "express-validator": "^6.11.1",
+    "express-list-endpoints": "^6.0.0",
+    "express-validator": "^6.12.2",
+    "http-errors": "^1.8.0",
     "json2csv": "^5.0.6",
-    "mongoose": "^5.12.12",
-    "multer": "^1.4.2",
+    "mongoose": "^6.0.9",
+    "multer": "^1.4.3",
     "multer-storage-cloudinary": "^4.0.0",
-    "nodemon": "^2.0.7",
-    "pdfmake": "^0.1.71",
-    "striptags": "^3.1.1",
+    "pdfmake": "^0.2.2",
+    "query-to-mongo": "^0.10.1",
+    "striptags": "^3.2.0",
     "uniqid": "^5.4.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.13"
   }
 }
