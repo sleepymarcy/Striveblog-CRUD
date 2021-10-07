@@ -1,23 +1,21 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
-/**
- * 
- * {
-	    
-	    "category": "ARTICLE CATEGORY",
-	    "title": "ARTICLE TITLE",
-	    "cover":"ARTICLE COVER (IMAGE LINK)",
-	    "readTime": {
-	      "value": 2,
-	      "unit": "minute"
-	    },
-	    "author": {
-	      "name": "AUTHOR NAME",
-	      "avatar":"AUTHOR AVATAR LINK"
-	    },
-	    "content": "HTML",         
-}
- */
+const CommentSchema = new mongoose.Schema(
+  {
+    text: { type: String, required: true },
+    rate: {
+      type: Number,
+      min: [1, "Rate must be min 1"],
+      max: [5, "Rate can be max 5"],
+      default: 5,
+    },
+    user: {
+      name: { type: String, required: true },
+      avatar: { type: String, required: true },
+    },
+  },
+  { timestamps: true }
+)
 
 const schema = new mongoose.Schema(
   {
@@ -28,6 +26,7 @@ const schema = new mongoose.Schema(
       value: { type: Number, required: true },
       unit: { type: String, required: true },
     },
+    comments: { default: [], type: [CommentSchema] },
     author: {
       name: { type: String, required: true },
       email: { type: String, required: true },
@@ -36,6 +35,6 @@ const schema = new mongoose.Schema(
     content: { type: String, required: true },
   },
   { timestamps: true }
-);
+)
 
-export default mongoose.model("Blog", schema);
+export default mongoose.model("Blog", schema)

@@ -1,6 +1,7 @@
-import PdfPrinter from "pdfmake";
-import striptags from "striptags";
-import axios from "axios";
+import PdfPrinter from "pdfmake"
+import striptags from "striptags"
+import axios from "axios"
+
 const fonts = {
   Roboto: {
     normal: "Helvetica",
@@ -10,20 +11,20 @@ const fonts = {
   },
 };
 
-const printer = new PdfPrinter(fonts);
+const printer = new PdfPrinter(fonts)
 
 export const generateBlogPDF = async (blog) => {
-  let imagePart = {};
+  let imagePart = {}
   if (blog.cover) {
     const response = await axios.get(blog.cover, {
       responseType: "arraybuffer",
     });
-    const blogCoverURLParts = blog.cover.split("/");
-    const fileName = blogCoverURLParts[blogCoverURLParts.length - 1];
-    const [id, extension] = fileName.split(".");
-    const base64 = response.data.toString("base64");
-    const base64Image = `data:image/${extension};base64,${base64}`;
-    imagePart = { image: base64Image, width: 500, margin: [0, 0, 0, 40] };
+    const blogCoverURLParts = blog.cover.split("/")
+    const fileName = blogCoverURLParts[blogCoverURLParts.length - 1]
+    const [id, extension] = fileName.split(".")
+    const base64 = response.data.toString("base64")
+    const base64Image = `data:image/${extension};base64,${base64}`
+    imagePart = { image: base64Image, width: 500, margin: [0, 0, 0, 40] }
   }
   const docDefinition = {
     content: [
@@ -33,6 +34,6 @@ export const generateBlogPDF = async (blog) => {
     ],
   };
 
-  const pdfDoc = printer.createPdfKitDocument(docDefinition);
-  return pdfDoc;
-};
+  const pdfDoc = printer.createPdfKitDocument(docDefinition)
+  return pdfDoc
+}

@@ -200,4 +200,4 @@ export const BlogPostMailTemplate = ({ title, link }) => `
       </div>
     
       </body>
-    </html>`;
+    </html>`

@@ -1,4 +1,4 @@
-import { checkSchema, validationResult } from "express-validator";
+import { checkSchema, validationResult } from "express-validator"
 
 const schema = {
   title: {
@@ -55,7 +55,7 @@ const schema = {
       errorMessage: "cover validation failed , type must be string",
     },
   },
-};
+}
 
 const searchSchema = {
   title: {
@@ -65,7 +65,7 @@ const searchSchema = {
         "title must be in query and type must be  string to search!",
     },
   },
-};
+}
 
 const commentSchema = {
   text: {
@@ -73,26 +73,29 @@ const commentSchema = {
       errorMessage: "Text field is required for comment",
     },
   },
-  userName: {
+  "user.name": {
     isString: {
       errorMessage: "User name is required for comment",
     },
   },
-};
+  "user.avatar": {
+    isString: {
+      errorMessage: "User avatar is required for comment",
+    },
+  },
+}
 
-export const checkCommentSchema = checkSchema(commentSchema);
-
-export const checkSearchSchema = checkSchema(searchSchema);
-
-export const checkBlogPostSchema = checkSchema(schema);
+export const checkCommentSchema = checkSchema(commentSchema)
+export const checkSearchSchema = checkSchema(searchSchema)
+export const checkBlogPostSchema = checkSchema(schema)
 
 export const checkValidationResult = (req, res, next) => {
-  const errors = validationResult(req);
+  const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    const error = new Error("Blog post validation is failed");
-    error.status = 400;
-    error.errors = errors.array();
-    next(error);
+    const error = new Error("Blog post validation is failed")
+    error.status = 400
+    error.errors = errors.array()
+    next(error)
   }
-  next();
-};
+  next()
+}
